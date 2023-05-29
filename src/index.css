@@ -1,13 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Kumbh Sans", sans-serif;
+  /* margin-bottom: 40rem; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 70%;
+  height: 100%;
+  z-index: 99;
+  transition: all 0.3s ease-in-out;
+  @apply lg:relative lg:left-0 lg:w-auto lg:h-auto z-auto;
+}
+
+nav.open {
+  background: white;
+  @apply shadow-2xl p-8 lg:shadow-none lg:p-0 lg:bg-transparent;
+  top: 0;
+  left: 0;
+}
+
+nav ul {
+  @apply flex flex-col lg:flex-row items-start 
+  mt-16 lg:mt-0 lg:items-center justify-start lg:pt-0
+  gap-6 lg:gap-7 font-bold lg:font-normal lg:text-base text-sm lg:text-gray-500;
+}
+
+nav ul li {
+  @apply cursor-pointer;
+}
+
+.close {
+  @apply absolute left-8 top-8;
+  z-index: 999;
 }
