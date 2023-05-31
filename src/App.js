@@ -9,8 +9,8 @@ import Lightbox from "./components/Lightbox";
 
 
 function App() {
-  let initialPrice = 125;
-  const [products] = useState(data);
+  const initialPrice = 125;
+  const [products] = useState(data); //array of image objects initialized as state
   const [value, setValue] = useState(0);
   const [price, setPrice] = useState(initialPrice);
   const [amount, setAmount] = useState(0);
@@ -18,9 +18,10 @@ function App() {
   const [showLightbox, setShowLightbox] = useState(false);
   const [cartItemCount, setCartItemCount] = useState(0);
 
-  const { mainImage } = products[value];
+  const { mainImage } = products[value]; //large screen main image display
 
-  const nextSlide = () => {
+  //small screen image navivation
+  const nextSlide = () => { 
     if (scrollIndex !== products.length) {
       setScrollIndex(scrollIndex + 1)
     } else if (scrollIndex === products.length) {
@@ -36,6 +37,7 @@ function App() {
     }
   }
 
+  //price increment and decrement function
   const handleMinus = () => {
     setAmount(amount - 1)
     if (amount <= 0) setAmount(0);    
@@ -63,16 +65,18 @@ function App() {
 
       <section className="flex flex-col lg:flex-row gap-7 max-w-4xl mx-auto lg:place-items-center lg:py-20">
         <article>
+          {/* mapping over the array of images to display on small screens based on index */}
           <div className="lg:hidden">
             {products.map((item, index) => (
               <div key={index} className={scrollIndex === index + 1 ? "relative" : "hidden"}>
                 <img
                   src={item.mainImage}
                   alt=""
-                  className="w-full lg:w-[90%] lg:rounded-2xl cursor-pointer"
+                  className="w-full cursor-pointer"
                   onClick={() => setShowLightbox(true)}
                 />
 
+              {/* scroll buttons for small screens */}
                 <ul className="lg:hidden">
                   <li>
                     <button onClick={prevSlide}
@@ -100,6 +104,7 @@ function App() {
                 />      
           </div>
 
+          {/* mapping over the array of images to display on large screens based on index */}
           <ul className="hidden lg:flex items-center justify-start lg:gap-5 flex-wrap mt-6">
             {products.map((item, index) => (
               <li key={item.id} onClick={() => setValue(index)}
@@ -143,6 +148,7 @@ function App() {
               </li>
             </ul>
 
+            {/* update number of items in cart */}
             <button onClick={() => setCartItemCount(cartItemCount + 1)} className="flex lg:flex-1 items-center justify-center gap-4 w-full bg-orange-500 py-3.5 px-4 text-white 
             font-bold rounded-lg shadow-2xl mt-5 lg:mt-0 shadow-orange-600/50 hover:bg-orange-600 transition-all duration-200">
               <BsCart3 /> Add to cart

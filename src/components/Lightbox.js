@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function Lightbox({ products, setShowLightbox }) {
     const [imageIndex, setImageIndex] = useState(0);
 
+    // image navigation for lightbox on large screeens
     const prevSlide = () => {
         setImageIndex((prevIndex) => {
           if (prevIndex === 0) {
@@ -56,6 +57,7 @@ export default function Lightbox({ products, setShowLightbox }) {
                         </div>
                     ))}
 
+                    {/* thumbnail list with function to display corresponding main image */}
                     <ul className="hidden lg:flex items-center justify-start lg:gap-5 flex-wrap mt-6 -translate-x-0.5">
                         {products.map((item, index) => (
                             <li key={item.id} onClick={() => setImageIndex(index)}

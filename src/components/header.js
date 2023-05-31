@@ -16,6 +16,7 @@ export default function Header({ price, amount, initialPrice, cartItemCount, set
             <header className="flex items-center justify-between py-5 px-5 lg:py-7 
             lg:px-0 border-b border-gray-200 max-w-[61.3rem] mx-auto relative">
                 <div className="flex items-center justify-start gap-12">
+                    {/* modifying navbar for mobile screens */}
                     <ul className="flex items-center justify-start gap-3">
                         {!isOpen && (
                             <button onClick={() => setIsOpen(true)}>
@@ -45,6 +46,7 @@ export default function Header({ price, amount, initialPrice, cartItemCount, set
                 <div>
                     <ul className="flex items-center justify-start gap-3">
                         <li className="inline-block relative">
+                            {/* cart icon toggle function */}
                             <button onClick={() => setCartIsOpen(!cartIsOpen)}>
                                 <BsCart3 className="text-xl lg:text-2xl text-gray-500" />
                                 {cartItemCount > 0 && (

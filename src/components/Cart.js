@@ -6,6 +6,7 @@ export default function Cart({ price, amount, initialPrice, cartItemCount, setCa
     const text = "Fall Limited Edition Sneakers";
     const [items, setItems] = useState([]);
 
+    // initialize an empty array to be filled by dom elements on line 43 - 54 along with corresponding dependencies
     useEffect(() => {
         const initialItems = Array.from({ length: cartItemCount }).map((_, index) => ({
             id: index,
@@ -15,10 +16,10 @@ export default function Cart({ price, amount, initialPrice, cartItemCount, setCa
             amount: amount,
             price: price,
         }));
-        // console.log(items);
         setItems(initialItems);
     }, [cartItemCount, thumbnail, text, initialPrice, amount, price])
 
+    // function to delete an item from cart
     const handleDelete = (index) => {
         setItems((prevItems) => {
             const updatedItems = [...prevItems];
