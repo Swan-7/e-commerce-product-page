@@ -9,11 +9,14 @@ import Lightbox from "./components/Lightbox";
 
 
 function App() {
+  let initialPrice = 125;
   const [products] = useState(data);
   const [value, setValue] = useState(0);
+  const [price, setPrice] = useState(initialPrice);
   const [amount, setAmount] = useState(0);
   const [scrollIndex, setScrollIndex] = useState(1);
   const [showLightbox, setShowLightbox] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   const { mainImage } = products[value];
 
@@ -35,17 +38,26 @@ function App() {
 
   const handleMinus = () => {
     setAmount(amount - 1)
-    if (amount <= 0) setAmount(0);
+    if (amount <= 0) setAmount(0);    
+    if (amount > 1) setPrice((prevPrice) => prevPrice - initialPrice);
+  }
+
+  const handlePlus = () => {
+    setAmount(amount + 1);
+    if (amount > 0) setPrice((prevPrice) => prevPrice + initialPrice);
   }
 
   return (
     <>
-      <Header />
+      <Header       
+      price={price}
+      amount={amount}
+      initialPrice={initialPrice}
+      cartItemCount={cartItemCount}
+      setCartItemCount={setCartItemCount}
+      />
       {showLightbox && <Lightbox
         products={products}
-        scrollIndex={scrollIndex}
-        prevSlide={prevSlide}
-        nextSlide={nextSlide}
         setShowLightbox={setShowLightbox}
       />}
 
@@ -91,9 +103,9 @@ function App() {
           <ul className="hidden lg:flex items-center justify-start lg:gap-5 flex-wrap mt-6">
             {products.map((item, index) => (
               <li key={item.id} onClick={() => setValue(index)}
-                className={`${index === value && "border-2 border-orange-400 opacity-80"} 
+                className={`${index === value && "border-2 border-orange-400 opacity-40"} 
                 border-2 rounded-2xl overflow-hidden cursor-pointer`}>
-                <img src={item.thumbnail} alt="" className="w-20" />
+                <img src={item.thumbnail} alt="" className="w-20 hover:opacity-70" />
               </li>
             ))}
           </ul>
@@ -109,7 +121,7 @@ function App() {
 
           <div className="flex flex-wrap lg:flex-col lg:items-start lg:gap-2 items-center justify-between">
             <ul className="flex gap-4 items-center">
-              <li className="text-slate-900 font-bold text-3xl lg:text-2xl">$125.00</li>
+              <li className="text-slate-900 font-bold text-3xl lg:text-2xl">${price}.00</li>
               <li className="bg-orange-100 text-orange-400 tracking-widest text-sm py-1 px-2 rounded shadow font-bold inline-block">50%</li>
             </ul>
 
@@ -125,13 +137,13 @@ function App() {
                 <img src={minus} alt="" />
               </li>
               <li className="font-semibold">{amount}</li>
-              <li onClick={() => setAmount(amount + 1)}
+              <li onClick={handlePlus}
                 className="cursor-pointer">
                 <img src={plus} alt="" />
               </li>
             </ul>
 
-            <button className="flex lg:flex-1 items-center justify-center gap-4 w-full bg-orange-500 py-3.5 px-4 text-white 
+            <button onClick={() => setCartItemCount(cartItemCount + 1)} className="flex lg:flex-1 items-center justify-center gap-4 w-full bg-orange-500 py-3.5 px-4 text-white 
             font-bold rounded-lg shadow-2xl mt-5 lg:mt-0 shadow-orange-600/50 hover:bg-orange-600 transition-all duration-200">
               <BsCart3 /> Add to cart
             </button>
