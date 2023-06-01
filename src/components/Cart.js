@@ -10,8 +10,6 @@ export default function Cart({ price, amount, initialPrice, cartItemCount, setCa
     useEffect(() => {
         const initialItems = Array.from({ length: cartItemCount }).map((_, index) => ({
             id: index,
-            thumbnail: thumbnail,
-            text: text,
             initialPrice: initialPrice,
             amount: amount,
             price: price,
@@ -42,9 +40,9 @@ export default function Cart({ price, amount, initialPrice, cartItemCount, setCa
                     <div>
                         {items.map((item, index) => (
                             <div key={index} className='flex items-center gap-3 p-6'>
-                            <img src={item.thumbnail} alt="" className='rounded-md w-10' />
+                            <img src={thumbnail} alt="" className='rounded-md w-10' />
                             <ul className='text-gray-400 text-sm'>
-                                <li>{item.text}</li>
+                                <li>{text}</li>
                                 <li>${item.initialPrice}.00 x {item.amount}
                                     <span className='font-bold text-gray-900 ml-1'>${item.price}.00</span>
                                 </li>

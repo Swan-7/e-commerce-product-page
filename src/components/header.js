@@ -34,11 +34,11 @@ export default function Header({ price, amount, initialPrice, cartItemCount, set
 
                     <nav className={isOpen ? "open" : undefined}>
                         <ul>
-                            <li><a href="#">Collections</a></li>
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li>Collections</li>
+                            <li>Men</li>
+                            <li>Women</li>
+                            <li>About</li>
+                            <li>Contact</li>
                         </ul>
                     </nav>
                 </div>
