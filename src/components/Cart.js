@@ -15,7 +15,7 @@ export default function Cart({ price, amount, initialPrice, cartItemCount, setCa
             price: price,
         }));
         setItems(initialItems);
-    }, [cartItemCount, thumbnail, text, initialPrice, amount, price])
+    }, [cartItemCount, initialPrice, amount, price])
 
     // function to delete an item from cart
     const handleDelete = (index) => {
