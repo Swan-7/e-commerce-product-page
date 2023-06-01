@@ -36,6 +36,15 @@ nav.open {
   z-index: 99;
 }
 
+.open ul li:hover {
+  border-bottom: 3px solid orange;
+}
+
+.open ul li::after {
+  transform: scaleX(1);
+  height: 0px;
+}
+
 nav ul {
   @apply flex flex-col lg:flex-row items-start mt-16 lg:mt-0 
   lg:items-center justify-start lg:pt-0 gap-6 lg:gap-7 font-bold 
@@ -43,17 +52,23 @@ nav ul {
 }
 
 nav ul li {
-  @apply cursor-pointer;
+  @apply cursor-pointer relative;
 }
 
-nav ul li:hover::after {
+nav ul li::after {
   content: "";
     position: absolute;
     left: 0;
-    bottom: -30px;
+    bottom: -40px;
     width: 100%;
     height: 3.3px;
     background: orange;
+    transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+nav ul li:hover::after {
+  transform: scaleX(1);
 }
 
 .close {
