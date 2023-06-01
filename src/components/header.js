@@ -65,7 +65,7 @@ export default function Header({ price, amount, initialPrice, cartItemCount, set
                             /> : undefined}
                         </li>
                         <li>
-                            <img src={avatar} alt="" className="w-6 lg:w-12 hover:outline rounded-full hover:outline-orange-500" />
+                            <img src={avatar} alt="" className="w-6 lg:w-12 hover:outline hover:rounded-full hover:outline-orange-500" />
                         </li>
                     </ul>
                 </div>
