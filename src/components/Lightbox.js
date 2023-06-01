@@ -33,11 +33,11 @@ export default function Lightbox({ products, setShowLightbox }) {
             <article className="hidden lg:block bg-black fixed top-0 left-0 right-0 bottom-0 z-50 bg-opacity-75">
                 <div className="flex flex-col items-center justify-center h-screen relative mx-auto">
                     <button onClick={() => setShowLightbox(false)}>
-                        <TiTimes className="text-2xl text-white hover:text-orange-500 absolute lg:top-16 xl:top-3 start-[65%]" />
+                        <TiTimes className="text-2xl text-white hover:text-orange-500 absolute lg:top-16 xl:top-8 start-[62.5%]" />
                     </button>
 
                     {products.map((item, index) => (
-                        <div key={index} className={index === imageIndex ? "relative lg:w-1/3" : "hidden"}>
+                        <div key={index} className={index === imageIndex ? "relative lg:w-[28%]" : "hidden"}>
                             <img src={item.mainImage} alt="" className="lg:rounded-2xl" />
 
                             <ul>
@@ -63,7 +63,7 @@ export default function Lightbox({ products, setShowLightbox }) {
                             <li key={item.id} onClick={() => setImageIndex(index)}
                                 className={`${index === imageIndex && "border-2 border-orange-400 opacity-40"} 
                                 border-2 border-transparent rounded-2xl overflow-hidden cursor-pointer`}>
-                                <img src={item.thumbnail} alt="" className="w-20 hover:opacity-70" />
+                                <img src={item.thumbnail} alt="" className="w-[4.4rem] hover:opacity-70" />
                             </li>
                         ))}
                     </ul>
